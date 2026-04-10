@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPA Agda Maria - Escala Médica</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="login-container">
+  <div class="login-box">
+    <h1>UPA Agda Maria</h1>
+    <h2>Sistema de Escalas Médicas - Pediatria</h2>
+    <p class="subtitle">Diretora Médica: Dra. Eliete Gomes Ansel</p>
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Login</label>
+        <input type="text" id="loginUser" placeholder="Digite seu login" required>
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="loginPass" placeholder="Digite sua senha" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+      <div id="loginError" class="error-msg"></div>
+    </form>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="appScreen" class="hidden">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>UPA Agda Maria</h1>
+      <span>Escala Médica - Pediatria</span>
+    </div>
+    <div class="header-right">
+      <button class="notif-badge" id="notifBtn" title="Notificações">
+        &#128276;
+        <span class="badge hidden" id="notifCount">0</span>
+      </button>
+      <div class="user-info">
+        <span class="user-name" id="userName"></span>
+        <br><span id="userRole" style="font-size:11px;"></span>
+      </div>
+      <button class="btn btn-secondary btn-sm" id="logoutBtn">Sair</button>
+    </div>
+  </div>
+
+  <!-- NOTIFICATION PANEL -->
+  <div class="notif-panel" id="notifPanel">
+    <div class="notif-header">
+      <strong>Notificações</strong>
+      <button class="btn btn-sm btn-secondary" id="markReadBtn">Marcar como lidas</button>
+    </div>
+    <div class="notif-list" id="notifList"></div>
+  </div>
+
+  <div class="main-layout">
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <div class="menu-section">Menu</div>
+      <a href="#" data-page="calendar" class="active">&#128197; Calendário</a>
+      <a href="#" data-page="scale">&#128203; Escala do Mês</a>
+      <a href="#" data-page="swaps">&#128260; Trocas</a>
+      <a href="#" data-page="summary">&#128202; Resumo</a>
+      <div id="adminMenu" class="hidden">
+        <div class="menu-section">Administração</div>
+        <a href="#" data-page="admin-scale">&#128221; Criar Escala</a>
+        <a href="#" data-page="admin-doctors">&#129489; Médicos</a>
+        <a href="#" data-page="admin-swaps">&#9989; Aprovar Trocas</a>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content" id="mainContent">
+      <!-- Pages are rendered here by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- SWAP MODAL -->
+<div class="modal-overlay" id="swapModal">
+  <div class="modal">
+    <h2>Solicitar Troca de Plantão</h2>
+    <div id="swapModalInfo"></div>
+    <div class="form-group">
+      <label>Trocar com qual médico?</label>
+      <select id="swapDoctorSelect"></select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="swapCancelBtn">Cancelar</button>
+      <button class="btn btn-primary" id="swapConfirmBtn">Solicitar Troca</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal">
+    <h2 id="confirmTitle">Confirmar</h2>
+    <p id="confirmMsg"></p>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="confirmNo">Não</button>
+      <button class="btn btn-primary" id="confirmYes">Sim</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
