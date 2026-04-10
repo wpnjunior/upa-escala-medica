@@ -9,6 +9,29 @@ const monthNames = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junh
 const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 const dayNamesFull = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
 
+// ============ MOBILE MENU ============
+(function setupMobileMenu() {
+  const hamburger = document.getElementById('hamburgerBtn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('show'); }
+  function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('show'); }
+  if (hamburger) {
+    hamburger.addEventListener('click', () => { sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
+  }
+  if (overlay) overlay.addEventListener('click', closeSidebar);
+  // Close sidebar on nav click (mobile)
+  if (sidebar) sidebar.addEventListener('click', (e) => {
+    if (e.target.closest('a[data-page]') && window.innerWidth <= 768) closeSidebar();
+  });
+  // Show hamburger on mobile
+  function checkMobile() {
+    if (hamburger) hamburger.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+  }
+  window.addEventListener('resize', checkMobile);
+  checkMobile();
+})();
+
 async function api(url, opts = {}) {
   const res = await fetch(url, {
     headers: { 'Content-Type': 'application/json' }, ...opts,
