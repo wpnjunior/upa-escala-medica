@@ -122,7 +122,7 @@ async function renderCalendar(el) {
       <h2>${monthNames[currentMonth]} ${currentYear}</h2>
       <button class="btn btn-secondary" id="nextMonth">&rarr;</button>
     </div>
-    <div class="card"><div class="calendar-grid" id="calendarGrid"></div></div>`;
+    <div class="card"><div class="calendar-wrapper"><div class="calendar-grid" id="calendarGrid"></div></div></div>`;
 
   document.getElementById('prevMonth').onclick = () => { changeMonth(-1); renderCalendar(el); };
   document.getElementById('nextMonth').onclick = () => { changeMonth(1); renderCalendar(el); };
