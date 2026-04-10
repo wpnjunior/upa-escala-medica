@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "setup": "node setup.js"
+    "setup": "node setup.js",
+    "build": "node -e \"const fs=require('fs'); if(!fs.existsSync('./data/db.json')){require('./setup');}\""
   },
   "dependencies": {
     "express": "^4.18.2",
